@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.Collection;
 
 @Stateless
@@ -22,6 +23,7 @@ public class EstacioService {
     @PersistenceContext
     protected EntityManager em;
 
+    @Transactional
     public Collection<Estacio> getEstacions() {
         try {
             return em.createQuery("SELECT estacio FROM Estacio estacio").getResultList();

@@ -49,8 +49,9 @@ public class Estacio implements Serializable {
     @JsonView(Views.Public.class)
     private Long tlf;
 
-    @ManyToMany(mappedBy = "estacions")
-    private Collection<Color> colors;
+    @JsonIgnore
+    @ManyToMany
+    private List<Color> colors;
 
     public String getNom() {
         return nom;

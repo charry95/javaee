@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"id","nom"}))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"id"}))
 public class Ruta implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -24,35 +25,46 @@ public class Ruta implements Serializable {
     }
 
     /** Constructor per parametres */
-    public Ruta(Long id, String nom) {
+    public Ruta(Long id) {
         this.id = id;
-        this.nom = nom;
+        this.incidencies = new ArrayList<>();
+        this.trams = new ArrayList<>();
+        this.tren = new Tren();
+        //this.color = new Color();
     }
 
     /**
      * Atributs de la classe Ruta:
      * - id (clau primaria)
-     * - nom
-     * - color_id (clau forana)
      * - tren_id (clau forana)
+     * - color_id (clau forana)
+     * - array d'incidencies
+     * - array de trams
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(Views.Private.class)
     protected Long id;
-
-    @NotNull
-    @JsonView(Views.Public.class)
-    private String nom;
-
-    /** Falten les claus foranes */
-
 
     /** Relacio OneToMany amb la classe Incidencia
      *  Relacio OneToMany amb la classe Tram
      *  Relacio ManyToOne amb la classe Tren
      *  Relacio ManyToOne amb la classe Color */
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta")
+    @JsonView(Views.Complete.class)
+    private Collection<Incidencia> incidencies;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta")
+    @JsonView(Views.Complete.class)
+    private Collection<Tram> trams;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Tren tren;
+/*
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Color color;
+*/
 
     /** Funcions de la classe Ruta */
     public Long getId() {
@@ -63,14 +75,20 @@ public class Ruta implements Serializable {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
-    }
+    public Collection<Incidencia> getIncidencies() { return incidencies; }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+    public void setIncidencies(Collection<Incidencia> incidencies) { this.incidencies = incidencies; }
 
-    /** funcions de les claus foranes! */
+    public Collection<Tram> getTrams() { return trams; }
 
+    public void setTrams(Collection<Tram> trams) { this.trams = trams; }
+
+    public Tren getTren() { return tren; }
+
+    public void setTren(Tren tren) { this.tren = tren; }
+/*
+    public Color getColor() { return color; }
+
+    public void setColor(Color color) { this.color = color; }
+*/
 }

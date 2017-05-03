@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/estacio")
 @RequestScoped
-public class EstacioRESTService {
+public class EstacioRESTService extends RESTService{
     @EJB
     EstacioService estacioService;
 
@@ -32,7 +32,6 @@ public class EstacioRESTService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllEstacions(@Context HttpServletRequest req) {
 
-        //return buildResponse(estacioService.getEstacions());
-        return Response.ok(estacioService.getEstacions()).build();
+        return buildResponse(estacioService.getEstacions());
     }
 }
