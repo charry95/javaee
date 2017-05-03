@@ -24,6 +24,7 @@ public class Color implements Serializable {
 
     public Color(String nom) {
         this.nom = nom;
+        this.rutes = new ArrayList<>();
     }
 
     @Id
@@ -37,6 +38,9 @@ public class Color implements Serializable {
 
     @ManyToMany(mappedBy = "colors")
     private List<Estacio> estacions;
+
+    @OneToMany(mappedBy = "color")
+    private Collection<Ruta> rutes;
 
     public String getNom() {
         return nom;
@@ -61,5 +65,18 @@ public class Color implements Serializable {
 
     public void addEstacio(Estacio estacio) {
         estacions.add(estacio);
+    }
+
+    public Collection<Ruta> getRutes() {
+        rutes.size();
+        return rutes;
+    }
+
+    public void setRutes(List<Ruta> es) {
+        this.rutes = es;
+    }
+
+    public void addRuta(Ruta r) {
+        rutes.add(r);
     }
 }

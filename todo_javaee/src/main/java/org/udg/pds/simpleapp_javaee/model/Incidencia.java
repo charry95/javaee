@@ -1,3 +1,4 @@
+
 package org.udg.pds.simpleapp_javaee.model;
 
 /**
@@ -29,7 +30,7 @@ public class Incidencia implements Serializable {
         this.descripcio = descripcio;
         this.retard = retard;
         this.activa = activa;
-        this.ruta = new Ruta();
+        //this.ruta = new Ruta();
     }
 
     /**
@@ -56,10 +57,11 @@ public class Incidencia implements Serializable {
     private Boolean activa;
 
     /** Relacio ManyToOne amb la classe Ruta */
+/*
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Ruta ruta;
-
+*/
     /** Funcions de la classe Incidencia */
     public Long getId() {
         return id;
@@ -84,8 +86,9 @@ public class Incidencia implements Serializable {
     public Boolean getActiva() { return activa; }
 
     public void setActiva(Boolean activa) { this.activa = activa; }
-
+/*
     public Ruta getRuta() { return ruta; }
 
     public void setRuta(Ruta ruta) { this.ruta = ruta; }
+*/
 }

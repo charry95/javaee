@@ -5,10 +5,7 @@
  */
 package org.udg.pds.simpleapp_javaee.util;
 
-import org.udg.pds.simpleapp_javaee.model.Estacio;
-import org.udg.pds.simpleapp_javaee.model.Color;
-import org.udg.pds.simpleapp_javaee.model.Task;
-import org.udg.pds.simpleapp_javaee.model.User;
+import org.udg.pds.simpleapp_javaee.model.*;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
@@ -49,26 +46,12 @@ public class InitDB {
         u2.addTask(t2);
         t2.setUser(u2);
 
-        //afegirEstacions();
-        //afegirColors();
 
-        /*Color c1 = new Color("r11");
-        Color c2 = new Color("r1");
+        // modificacions
 
-        Estacio e1 = new Estacio(new Long(79202),"Sils",41.807685,2.744855, null);
-        em.persist(e1);
-        e1.addColor(c1);
-        c1.addEstacio(e1);
-        Estacio e2 = new Estacio(new Long(79300), "Girona",41.979116,2.817076, null);
-        em.persist(e2);
-        e2.addColor(c1);
-        c1.addEstacio(e2);
-        Estacio e3 = new Estacio(new Long(79200), "Maçanet-Massanes",41.772461,2.674072, null);
-        em.persist(e3);
-        e3.addColor(c1);
-        c1.addEstacio(e3);
-        e3.addColor(c1);
-        c2.addEstacio(e3);*/
+        Ruta r1 = new Ruta(new Long(1));
+        em.persist(r1);
+
 
         Color c1 = new Color("r11");
         em.persist(c1);
@@ -85,6 +68,9 @@ public class InitDB {
         e2.getColors().add(c1);
         e3.getColors().add(c1);
         e3.getColors().add(c2);
+
+
+        r1.setColor(c1);
 
         /*c1.getEstacions().add(e1);
         c1.getEstacions().add(e2);
