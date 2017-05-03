@@ -40,6 +40,7 @@ public class Color implements Serializable {
     private List<Estacio> estacions;
 
     @OneToMany(mappedBy = "color")
+    @JsonView(Views.Public.class)
     private Collection<Ruta> rutes;
 
     public String getNom() {
