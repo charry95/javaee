@@ -1,0 +1,14 @@
+Obtenir id_Color_Origen de l'estació Origen 	[SQL fet]
+Obtenir id_Color_Desti de l'estació Destí		[SQL fet]
+Si id_Color_Origen == id_Color_Desti llavors
+	Obtenir llistat de Rutes que formin part de la linia corresponent (id_Color_Origen == id_Color_Ruta)	[SQL no fet!]
+	Per cada Ruta
+		Obtenir id_Ruta
+		Obtenir llistat de Trams que siguin de la Ruta corresponent (id_Ruta == id_Ruta_Tram)				[SQL no fet!]
+		Obtenir id_Tram_Origen del llistat de Trams amb id_Estacio == id_Estacio_Origen						[SQL no fet!]
+		Obtenir id_Tram_Destí del llistat de Trams amb id_Estacio == id_Estacio_Destí						[SQL no fet!]
+		Si id_Tram_Origen < id_Tram_Destí llavors
+			Mostrar informació del Tram Origen				[SQL no fet!]
+			Mostrar informació del Tram Destí				[SQL no fet!]
+Altrament
+	Error "Les dues estacions no són de la mateixa linia."
