@@ -29,7 +29,7 @@ public class Incidencia implements Serializable {
         this.descripcio = descripcio;
         this.retard = retard;
         this.activa = activa;
-        this.ruta = new Ruta();
+        //this.ruta = new Ruta();
     }
 
     /**
@@ -56,9 +56,9 @@ public class Incidencia implements Serializable {
     private Boolean activa;
 
     /** Relacio ManyToOne amb la classe Ruta */
-    @JsonIgnore
+    /*@JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    private Ruta ruta;
+    private Ruta ruta;*/
 
     /** Funcions de la classe Incidencia */
     public Long getId() {
@@ -85,7 +85,7 @@ public class Incidencia implements Serializable {
 
     public void setActiva(Boolean activa) { this.activa = activa; }
 
-    public Ruta getRuta() { return ruta; }
+    /*public Ruta getRuta() { return ruta; }
 
-    public void setRuta(Ruta ruta) { this.ruta = ruta; }
+    public void setRuta(Ruta ruta) { this.ruta = ruta; }*/
 }

@@ -27,9 +27,9 @@ public class Ruta implements Serializable {
     /** Constructor per parametres */
     public Ruta(Long id) {
         this.id = id;
-        this.incidencies = new ArrayList<>();
+        /*this.incidencies = new ArrayList<>();
         this.trams = new ArrayList<>();
-        this.tren = new Tren();
+        this.tren = new Tren();*/
         //this.color = new Color();
     }
 
@@ -49,17 +49,17 @@ public class Ruta implements Serializable {
      *  Relacio OneToMany amb la classe Tram
      *  Relacio ManyToOne amb la classe Tren
      *  Relacio ManyToOne amb la classe Color */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta")
+   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta")
     @JsonView(Views.Complete.class)
-    private Collection<Incidencia> incidencies;
+    private Collection<Incidencia> incidencies;*/
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta")
+   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta")
     @JsonView(Views.Complete.class)
-    private Collection<Tram> trams;
+    private Collection<Tram> trams;*/
 
-    @JsonIgnore
+   /* @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    private Tren tren;
+    private Tren tren;*/
 /*
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -75,7 +75,7 @@ public class Ruta implements Serializable {
         this.id = id;
     }
 
-    public Collection<Incidencia> getIncidencies() { return incidencies; }
+    /*public Collection<Incidencia> getIncidencies() { return incidencies; }
 
     public void setIncidencies(Collection<Incidencia> incidencies) { this.incidencies = incidencies; }
 
@@ -85,7 +85,7 @@ public class Ruta implements Serializable {
 
     public Tren getTren() { return tren; }
 
-    public void setTren(Tren tren) { this.tren = tren; }
+    public void setTren(Tren tren) { this.tren = tren; }*/
 /*
     public Color getColor() { return color; }
 

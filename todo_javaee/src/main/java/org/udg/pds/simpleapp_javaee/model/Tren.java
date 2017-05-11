@@ -27,7 +27,7 @@ public class Tren implements Serializable {
     public Tren(String nom, String tipus) {
         this.nom = nom;
         this.tipus = tipus;
-        this.rutes = new ArrayList<>();
+        //this.rutes = new ArrayList<>();
     }
 
     /**
@@ -51,9 +51,9 @@ public class Tren implements Serializable {
 
 
     /** Relacio OneToMany amb la classe Ruta */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tren")
+    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "tren")
     @JsonView(Views.Complete.class)
-    private Collection<Ruta> rutes;
+    private Collection<Ruta> rutes;*/
 
     /** Funcions de la classe Tren */
     public Long getId() {
@@ -76,8 +76,8 @@ public class Tren implements Serializable {
 
     public void setTipus(String tipus) { this.tipus = tipus; }
 
-    public Collection<Ruta> getRutes() { return rutes; }
+    /*public Collection<Ruta> getRutes() { return rutes; }
 
-    public void setRutes(Collection<Ruta> rutes) { this.rutes = rutes; }
+    public void setRutes(Collection<Ruta> rutes) { this.rutes = rutes; }*/
 
 }

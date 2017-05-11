@@ -35,6 +35,7 @@ public class Color implements Serializable {
     @JsonView(Views.Public.class)
     private String nom;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "colors")
     private List<Estacio> estacions;
 
