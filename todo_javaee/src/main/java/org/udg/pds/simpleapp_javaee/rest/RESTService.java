@@ -54,7 +54,7 @@ public class RESTService {
     return Response.ok(o).build();
   }
 
-  protected Response buildResponseWithView(Class<?> view, User u) {
+  protected Response buildResponseWithView(Class<?> view, Object u) {
     try {
       return Response.ok(toJSON.Object(view, u)).build();
     } catch (IOException e) {

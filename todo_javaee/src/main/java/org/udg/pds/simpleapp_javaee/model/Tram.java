@@ -25,11 +25,11 @@ public class Tram implements Serializable {
     }
 
     /** Constructor per parametres */
-    public Tram(Long hora, Long minut) {
+    public Tram(Integer hora, Integer minut) {
         this.hora = hora;
         this.minut = minut;
-        //this.estacio = new Estacio();
-        this.ruta = new Ruta();
+        this.estacio = new Estacio();
+        //this.ruta = new Ruta();
     }
 
     /**
@@ -42,27 +42,28 @@ public class Tram implements Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonView(Views.Private.class)
+    @JsonView(Views.Public.class)
     protected Long id;
 
     @NotNull
     @JsonView(Views.Public.class)
-    private Long hora;
+    private Integer hora;
 
+    @NotNull
     @JsonView(Views.Public.class)
-    private Long minut;
+    private Integer minut;
 
     /** Relacio ManyToOne amb la classe Estacio
      *  Relacio ManyToOne amb la classe Ruta */
-/*
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Estacio estacio;
-*/
 
     @JsonIgnore
+    @ManyToOne
+    private Estacio estacio;
+
+
+    /*@JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    private Ruta ruta;
+    private Ruta ruta;*/
 
 
     /** Funcions de la classe Tram */
@@ -74,23 +75,23 @@ public class Tram implements Serializable {
         this.id = id;
     }
 
-    public Long getHora() {
+    public Integer getHora() {
         return hora;
     }
 
-    public void setHora(Long hora) {
+    public void setHora(Integer hora) {
         this.hora = hora;
     }
 
-    public Long getMinut() { return minut; }
+    public Integer getMinut() { return minut; }
 
-    public void setMinut(Long minut) { this.minut = minut; }
-/*
+    public void setMinut(Integer minut) { this.minut = minut; }
+
     public Estacio getEstacio() { return estacio; }
 
     public void setEstacio(Estacio estacio) { this.estacio = estacio; }
-*/
-    public Ruta getRuta() { return ruta; }
 
-    public void setRuta(Ruta ruta) { this.ruta = ruta; }
+    /*public Ruta getRuta() { return ruta; }
+
+    public void setRuta(Ruta ruta) { this.ruta = ruta; }*/
 }

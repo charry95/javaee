@@ -4,6 +4,8 @@ package org.udg.pds.simpleapp_javaee.rest;
  * Created by Charry on 02/05/2017.
  */
 
+import org.udg.pds.simpleapp_javaee.model.Estacio;
+import org.udg.pds.simpleapp_javaee.model.Views;
 import org.udg.pds.simpleapp_javaee.service.EstacioService;
 import org.udg.pds.simpleapp_javaee.util.ToJSON;
 
@@ -18,6 +20,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Collection;
 
 @Path("/estacio")
 @RequestScoped
@@ -31,7 +34,8 @@ public class EstacioRESTService extends RESTService{
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllEstacions(@Context HttpServletRequest req) {
-
-        return buildResponse(estacioService.getEstacions());
+        Collection<Estacio> estacions = estacioService.getEstacions();
+        return buildResponseWithView(Views.Public.class, estacions);
+        //return buildResponse(estacioService.getEstacions());
     }
 }
