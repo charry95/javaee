@@ -42,18 +42,18 @@ public class Estacio implements Serializable {
     @JsonView(Views.Public.class)
     private String nom;
 
-    @JsonView(Views.Complete.class)
+    @JsonView(Views.Private.class)
     private Double latitud;
 
-    @JsonView(Views.Complete.class)
+    @JsonView(Views.Private.class)
     private Double longitud;
 
-    @JsonView(Views.Complete.class)
+    @JsonView(Views.Private.class)
     private Long tlf;
 
     //@JsonIgnore
     @ManyToMany
-    @JsonView(Views.Complete.class)
+    @JsonView(Views.Private.class)
     private List<Color> colors;
 
     //@JsonIgnore

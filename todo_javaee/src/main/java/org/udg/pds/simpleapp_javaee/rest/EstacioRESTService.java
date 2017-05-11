@@ -38,4 +38,13 @@ public class EstacioRESTService extends RESTService{
         return buildResponseWithView(Views.Public.class, estacions);
         //return buildResponse(estacioService.getEstacions());
     }
+
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getEstacio(@Context HttpServletRequest req,
+                            @PathParam("id") Long id) {
+        Estacio e = estacioService.getEstacio(id);
+        return buildResponseWithView(Views.Private.class, e);
+    }
 }
