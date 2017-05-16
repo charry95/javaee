@@ -78,10 +78,14 @@ public class InitDB {
 
         Estacio e1 = new Estacio(new Long(79202),"Sils",41.807685,2.744855, null);
         em.persist(e1);
+        e1.addColor(c1);
+        e1.addColor(c2);
         Estacio e2 = new Estacio(new Long(79300), "Girona",41.979116,2.817076, null);
         em.persist(e2);
+        e2.addColor(c1);
         Estacio e3 = new Estacio(new Long(79200), "Maçanet-Massanes",41.772461,2.674072, null);
         em.persist(e3);
+        e3.addColor(c2);
 
         Tram tram1 = new Tram(7,22);
         em.persist(tram1);
@@ -120,10 +124,10 @@ public class InitDB {
         tram9.setEstacio(e2);
 
 
-        e1.getColors().add(c1);
+        /*e1.getColors().add(c1);
         e2.getColors().add(c1);
         e3.getColors().add(c1);
-        e3.getColors().add(c2);
+        e3.getColors().add(c2);*/
 
         /*e1.getTrams().add(tram2);
         e1.getTrams().add(tram5);

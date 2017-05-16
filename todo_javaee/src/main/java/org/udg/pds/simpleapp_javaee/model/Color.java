@@ -4,8 +4,9 @@ package org.udg.pds.simpleapp_javaee.model;
  * Created by Charry on 03/05/2017.
  */
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.udg.pds.simpleapp_javaee.rest.serializer.CustomEstacioSerializer;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -28,15 +29,16 @@ public class Color implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonView(Views.Private.class)
+    @JsonView(Views.Public.class)
     protected Long id;
 
     @NotNull
     @JsonView(Views.Public.class)
     private String nom;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "colors")
+    @JsonView(Views.Complete.class)
+    @JsonSerialize(using = CustomEstacioSerializer.class)
     private List<Estacio> estacions;
 
     public String getNom() {

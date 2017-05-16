@@ -4,8 +4,7 @@ package org.udg.pds.simpleapp_javaee.model;
  * Created by Charry on 02/05/2017.
  */
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -54,6 +53,7 @@ public class Estacio implements Serializable {
     //@JsonIgnore
     @ManyToMany
     @JsonView(Views.Private.class)
+    @JsonManagedReference
     private List<Color> colors;
 
     //@JsonIgnore
