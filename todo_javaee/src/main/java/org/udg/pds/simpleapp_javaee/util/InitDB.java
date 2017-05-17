@@ -52,11 +52,21 @@ public class InitDB {
         Ruta r1 = new Ruta(new Long(1));
         em.persist(r1);
 
+        Ruta r2 = new Ruta(new Long(2));
+        em.persist(r2);
+
+        Ruta r3 = new Ruta(new Long(3));
+        em.persist(r3);
+
 
         Color c1 = new Color("r11");
         em.persist(c1);
+        r1.setColor(c1);
+        r2.setColor(c1);
+        r3.setColor(c1);
         Color c2 = new Color("r1");
         em.persist(c2);
+
 
         Estacio e1 = new Estacio(new Long(79202),"Sils",41.807685,2.744855, null);
         em.persist(e1);
@@ -65,43 +75,45 @@ public class InitDB {
         Estacio e2 = new Estacio(new Long(79300), "Girona",41.979116,2.817076, null);
         em.persist(e2);
         e2.addColor(c1);
+        e2.addColor(c2);
         Estacio e3 = new Estacio(new Long(79200), "Maçanet-Massanes",41.772461,2.674072, null);
         em.persist(e3);
+        e3.addColor(c1);
         e3.addColor(c2);
 
-        Tram tram1 = new Tram(7,22);
+        Tram tram1 = new Tram(7,22,r1);
         em.persist(tram1);
         tram1.setEstacio(e3);
 
-        Tram tram2 = new Tram(7,28);
+        Tram tram2 = new Tram(7,28,r1);
         em.persist(tram2);
         tram2.setEstacio(e1);
 
-        Tram tram3 = new Tram(7,48);
+        Tram tram3 = new Tram(7,48,r1);
         em.persist(tram3);
         tram3.setEstacio(e2);
 
-        Tram tram4 = new Tram(10,22);
+        Tram tram4 = new Tram(10,22,r2);
         em.persist(tram4);
         tram4.setEstacio(e3);
 
-        Tram tram5 = new Tram(10,28);
+        Tram tram5 = new Tram(10,28,r2);
         em.persist(tram5);
         tram5.setEstacio(e1);
 
-        Tram tram6 = new Tram(10,48);
+        Tram tram6 = new Tram(10,48,r2);
         em.persist(tram6);
         tram6.setEstacio(e2);
 
-        Tram tram7 = new Tram(12,22);
+        Tram tram7 = new Tram(12,22,r3);
         em.persist(tram7);
         tram7.setEstacio(e3);
 
-        Tram tram8 = new Tram(12,28);
+        Tram tram8 = new Tram(12,28,r3);
         em.persist(tram8);
         tram8.setEstacio(e1);
 
-        Tram tram9 = new Tram(12,48);
+        Tram tram9 = new Tram(12,48,r3);
         em.persist(tram9);
         tram9.setEstacio(e2);
 
@@ -142,24 +154,5 @@ public class InitDB {
     } catch (Exception ex) {
       log.log(Level.INFO, "Error initializing database");
     }
-  }
-
-  private void afegirEstacions(){
-    Estacio e1 = new Estacio(new Long(79202),"Sils",41.807685,2.744855, null);
-    em.persist(e1);
-
-    Estacio e2 = new Estacio(new Long(79300), "Girona",41.979116,2.817076, null);
-    em.persist(e2);
-
-    Estacio e3 = new Estacio(new Long(79200), "Maçanet-Massanes",41.772461,2.674072, null);
-    em.persist(e3);
-  }
-
-  private void afegirColors(){
-    Color c1 = new Color("r11");
-    em.persist(c1);
-
-    Color c2 = new Color("r1");
-    em.persist(c2);
   }
 }

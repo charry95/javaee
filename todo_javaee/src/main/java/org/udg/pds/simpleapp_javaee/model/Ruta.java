@@ -30,7 +30,7 @@ public class Ruta implements Serializable {
         //this.incidencies = new ArrayList<>();
         //this.trams = new ArrayList<>();
         //this.tren = new Tren();
-        this.color = new Color();
+        this.color = null;
     }
 
     /**
@@ -42,8 +42,16 @@ public class Ruta implements Serializable {
      * - array de trams
      */
     @Id
-    @JsonView(Views.Private.class)
+    @JsonView(Views.Public.class)
     protected Long id;
+
+    @JsonIgnore
+    @ManyToOne
+    private Color color;
+
+    @OneToMany(mappedBy = "ruta")
+    @JsonView(Views.Public.class)
+    private Collection<Tram> trams;
 
     /** Relacio OneToMany amb la classe Incidencia
      *  Relacio OneToMany amb la classe Tram
@@ -65,9 +73,7 @@ public class Ruta implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Tren tren;
 */
-    @JsonIgnore
-    @ManyToOne
-    private Color color;
+
 
 
     /** Funcions de la classe Ruta */
@@ -83,10 +89,6 @@ public class Ruta implements Serializable {
 
     public void setIncidencies(Collection<Incidencia> incidencies) { this.incidencies = incidencies; }
 
-    public Collection<Tram> getTrams() { return trams; }
-
-    public void setTrams(Collection<Tram> trams) { this.trams = trams; }
-
     public Tren getTren() { return tren; }
 
     public void setTren(Tren tren) { this.tren = tren; }
@@ -94,5 +96,9 @@ public class Ruta implements Serializable {
     public Color getColor() { return color; }
 
     public void setColor(Color color) { this.color = color; }
+
+    public Collection<Tram> getTrams() { return trams; }
+
+    public void setTrams(Collection<Tram> trams) { this.trams = trams; }
 
 }
