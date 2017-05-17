@@ -29,17 +29,9 @@ public class CustomEstacioSerializer extends StdSerializer<List<Estacio>> {
 
     @Override
     public void serialize(List<Estacio> estacions, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonGenerationException {
-        /*List<Long> estacionsjson = new ArrayList<Long>();
-        for (Estacio estacio : estacions) {
-            estacionsjson.add(estacio.getId());
-        }
-        jsonGenerator.writeObject(estacionsjson);*/
-
         jsonGenerator.writeStartArray();
         for (Estacio estacio : estacions) {
             jsonGenerator.writeStartObject();
-            /*jsonGenerator.writeObjectField("id", estacio.getId());
-            jsonGenerator.writeObjectField("nom", estacio.getNom());*/
             jsonGenerator.writeNumberField("id", estacio.getId());
             jsonGenerator.writeStringField("nom", estacio.getNom());
             jsonGenerator.writeEndObject();
