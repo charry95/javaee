@@ -62,6 +62,7 @@ public class Incidencia implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Ruta ruta;
 */
+
     /** Funcions de la classe Incidencia */
     public Long getId() {
         return id;
@@ -86,6 +87,7 @@ public class Incidencia implements Serializable {
     public Boolean getActiva() { return activa; }
 
     public void setActiva(Boolean activa) { this.activa = activa; }
+
 /*
     public Ruta getRuta() { return ruta; }
 

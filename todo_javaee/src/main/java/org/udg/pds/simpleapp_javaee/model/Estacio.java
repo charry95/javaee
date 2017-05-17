@@ -4,8 +4,7 @@ package org.udg.pds.simpleapp_javaee.model;
  * Created by Charry on 02/05/2017.
  */
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,6 +20,7 @@ public class Estacio implements Serializable {
 
     public Estacio() {
         this.colors = new ArrayList<>();
+        this.trams = new ArrayList<>();
     }
 
     public Estacio(Long id, String nom, Double latitud, Double longitud, Long tlf) {
@@ -30,28 +30,36 @@ public class Estacio implements Serializable {
         this.longitud = longitud;
         this.tlf = tlf;
         this.colors = new ArrayList<>();
+        this.trams = new ArrayList<>();
     }
 
     @Id
-    @JsonView(Views.Private.class)
+    @JsonView(Views.Public.class)
     protected Long id;
 
     @NotNull
     @JsonView(Views.Public.class)
     private String nom;
 
-    @JsonView(Views.Public.class)
+    @JsonView(Views.Private.class)
     private Double latitud;
 
-    @JsonView(Views.Public.class)
+    @JsonView(Views.Private.class)
     private Double longitud;
 
-    @JsonView(Views.Public.class)
+    @JsonView(Views.Private.class)
     private Long tlf;
 
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToMany
+    @JsonView(Views.Private.class)
+    @JsonManagedReference
     private List<Color> colors;
+
+    //@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estacio")
+    @JsonView(Views.Complete.class)
+    private List<Tram> trams;
 
     public String getNom() {
         return nom;
@@ -100,5 +108,18 @@ public class Estacio implements Serializable {
 
     public void addColor(Color color) {
         colors.add(color);
+    }
+
+    public Collection<Tram> getTrams() {
+        trams.size();
+        return trams;
+    }
+
+    public void setTrams(List<Tram> tr) {
+        this.trams = tr;
+    }
+
+    public void addTram(Tram tram) {
+        trams.add(tram);
     }
 }

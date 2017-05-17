@@ -1,10 +1,10 @@
 package org.udg.pds.simpleapp_javaee.service;
 
 /**
- * Created by Charry on 03/05/2017.
+ * Created by Charry on 14/05/2017.
  */
 
-import org.udg.pds.simpleapp_javaee.model.Estacio;
+import org.udg.pds.simpleapp_javaee.model.Color;
 import org.udg.pds.simpleapp_javaee.rest.RESTService;
 
 import javax.ejb.EJBException;
@@ -18,15 +18,15 @@ import java.util.Collection;
 
 @Stateless
 @LocalBean
-public class EstacioService {
+public class ColorService {
 
     @PersistenceContext
     protected EntityManager em;
 
 
-    public Collection<Estacio> getEstacions() {
+    public Collection<Color> getColors() {
         try {
-            return em.createQuery("SELECT estacio FROM Estacio estacio").getResultList();
+            return em.createQuery("SELECT color FROM Color color").getResultList();
         } catch (Exception ex) {
             // Very important: if you want that an exception reaches the EJB caller, you have to throw an EJBException
             // We catch the normal exception and then transform it in a EJBException
@@ -34,10 +34,10 @@ public class EstacioService {
         }
     }
 
-    public Estacio getEstacio(Long id) {
+    public Color getColor(Long id) {
         try {
-            Estacio e = em.find(Estacio.class, id);
-            return e;
+            Color c = em.find(Color.class, id);
+            return c;
         } catch (Exception ex) {
             // Very important: if you want that an exception reaches the EJB caller, you have to throw an EJBException
             // We catch the normal exception and then transform it in a EJBException
@@ -45,3 +45,6 @@ public class EstacioService {
         }
     }
 }
+
+
+

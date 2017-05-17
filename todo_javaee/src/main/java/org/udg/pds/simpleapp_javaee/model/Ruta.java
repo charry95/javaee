@@ -49,16 +49,19 @@ public class Ruta implements Serializable {
      *  Relacio OneToMany amb la classe Tram
      *  Relacio ManyToOne amb la classe Tren
      *  Relacio ManyToOne amb la classe Color */
+
 /*
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta")
-    @JsonView(Views.Complete.class)
-    private Collection<Incidencia> incidencies;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta")
-    @JsonView(Views.Complete.class)
-    private Collection<Tram> trams;
 
-    @JsonIgnore
+    @JsonView(Views.Complete.class)
+    private Collection<Incidencia> incidencies;*/
+
+   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta")
+    @JsonView(Views.Complete.class)
+    private Collection<Tram> trams;*/
+
+   /* @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Tren tren;
 */
