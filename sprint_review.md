@@ -40,7 +40,7 @@
 [PDS7-26](http://ggg.udg.edu:8080/browse/PDS7-26) 7
 
 
-#Sprint 4
+# Sprint 4
 ## Joan Esmandia
 [PDS7-31](http://ggg.udg.edu:8080/browse/PDS7-31) 3
 [PDS7-36](http://ggg.udg.edu:8080/browse/PDS7-36) 1
