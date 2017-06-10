@@ -51,6 +51,8 @@ public class Color implements Serializable {
     @JsonIgnore
     private Collection<Incidencia> incidencies;
 
+
+
     public String getNom() {
         return nom;
     }

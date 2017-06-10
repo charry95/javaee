@@ -41,18 +41,18 @@ public class RutaRESTService extends RESTService{
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getColor(@Context HttpServletRequest req,
+    public Response getRutes(@Context HttpServletRequest req,
                              @QueryParam("origen") Long idOrigen,
                              @QueryParam("desti") Long idDesti) {
         Collection<Ruta> rutes = null;
-        estacioService.getEstacions();
         Estacio origen = estacioService.getEstacio(idOrigen);
         Estacio desti = estacioService.getEstacio(idDesti);
         if(origen!=null && desti!=null){
             List<Color> colorsOrigen = new ArrayList<Color>(origen.getColors());
             List<Color> colorsDesti = new ArrayList<Color>(desti.getColors());
 
-            if(colorsDesti!=null && colorsOrigen!= null && colorsOrigen.get(0).getId().equals(colorsDesti.get(0).getId())){
+            if(colorsDesti!=null && colorsOrigen!= null){// && colorsOrigen.get(0).getId().equals(colorsDesti.get(0).getId())){
+                //List<List<Color>> camins = colorService.obtenirCaminsColors(colorsOrigen, colorsDesti);
                 rutes = rutaService.getRutesNoTransbord(colorsOrigen.get(0),origen,desti);
             }
         }
