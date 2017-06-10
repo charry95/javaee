@@ -25,8 +25,8 @@ public class Ruta implements Serializable {
     }
 
     /** Constructor per parametres */
-    public Ruta(Long id) {
-        this.id = id;
+    public Ruta(String direccio) {
+        this.direccio = direccio;
         //this.incidencies = new ArrayList<>();
         //this.trams = new ArrayList<>();
         //this.tren = new Tren();
@@ -42,8 +42,12 @@ public class Ruta implements Serializable {
      * - array de trams
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(Views.Public.class)
     protected Long id;
+
+    @JsonView(Views.Public.class)
+    private String direccio;
 
     @JsonIgnore
     @ManyToOne
@@ -100,5 +104,17 @@ public class Ruta implements Serializable {
     public Collection<Tram> getTrams() { return trams; }
 
     public void setTrams(Collection<Tram> trams) { this.trams = trams; }
+
+    public Boolean direccioCorrecte(Long origen, Long desti){
+        Boolean origenPrimer = false;
+        Boolean destiInclos = false;
+        for(Tram actual : trams){
+            if(actual.getEstacio().getId().equals(origen) && !destiInclos)
+                origenPrimer = true;
+            else if(actual.getEstacio().getId().equals(desti))
+                destiInclos = true;
+        }
+        return origenPrimer && destiInclos;
+    }
 
 }

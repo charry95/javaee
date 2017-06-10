@@ -32,25 +32,28 @@ import java.util.List;
 public class RutaRESTService extends RESTService{
     @EJB
     RutaService rutaService;
+
+    @EJB
     EstacioService estacioService;
 
     @Inject
     ToJSON toJSON;
 
     @GET
-    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getColor(@Context HttpServletRequest req,
-                             @PathParam("id") Long idOrigen,
-                             @PathParam("id") Long idDesti) {
+                             @QueryParam("origen") Long idOrigen,
+                             @QueryParam("desti") Long idDesti) {
         Collection<Ruta> rutes = null;
+        estacioService.getEstacions();
         Estacio origen = estacioService.getEstacio(idOrigen);
         Estacio desti = estacioService.getEstacio(idDesti);
         if(origen!=null && desti!=null){
             List<Color> colorsOrigen = new ArrayList<Color>(origen.getColors());
             List<Color> colorsDesti = new ArrayList<Color>(desti.getColors());
-            if(colorsOrigen.get(0) == colorsDesti.get(0)){
-                rutes = rutaService.getRutes(colorsOrigen.get(0));
+
+            if(colorsDesti!=null && colorsOrigen!= null && colorsOrigen.get(0).getId().equals(colorsDesti.get(0).getId())){
+                rutes = rutaService.getRutesNoTransbord(colorsOrigen.get(0),origen,desti);
             }
         }
         return buildResponseWithView(Views.Complete.class, rutes);
