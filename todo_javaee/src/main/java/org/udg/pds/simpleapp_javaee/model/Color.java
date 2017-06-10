@@ -46,6 +46,10 @@ public class Color implements Serializable {
     @JsonView(Views.Public.class)
     private Collection<Ruta> rutes;
 
+    @OneToMany(mappedBy = "colorIncidencia")
+    @JsonIgnore
+    private Collection<Incidencia> incidencies;
+
     public String getNom() {
         return nom;
     }
@@ -82,5 +86,18 @@ public class Color implements Serializable {
 
     public void addRuta(Ruta r) {
         rutes.add(r);
+    }
+
+    public Collection<Incidencia> getIncidencies() {
+        incidencies.size();
+        return incidencies;
+    }
+
+    public void setIncidencies(List<Incidencia> in) {
+        this.incidencies = in;
+    }
+
+    public void addIncidencia(Incidencia i) {
+        incidencies.add(i);
     }
 }
