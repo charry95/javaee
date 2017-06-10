@@ -53,7 +53,6 @@ public class Estacio implements Serializable {
     //@JsonIgnore
     @ManyToMany
     @JsonView(Views.Private.class)
-    @JsonManagedReference
     private List<Color> colors;
 
     //@JsonIgnore

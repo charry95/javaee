@@ -5,7 +5,6 @@ package org.udg.pds.simpleapp_javaee.service;
  */
 
 import org.udg.pds.simpleapp_javaee.model.Color;
-import org.udg.pds.simpleapp_javaee.rest.RESTService;
 
 import javax.ejb.EJBException;
 import javax.ejb.LocalBean;

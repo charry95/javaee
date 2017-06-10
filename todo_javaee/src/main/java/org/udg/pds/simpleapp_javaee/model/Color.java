@@ -6,7 +6,7 @@ package org.udg.pds.simpleapp_javaee.model;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.udg.pds.simpleapp_javaee.rest.serializer.CustomEstacioSerializer;
+import org.udg.pds.simpleapp_javaee.rest.serializer.CustomEstacioListSerializer;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -39,11 +39,12 @@ public class Color implements Serializable {
 
     @ManyToMany(mappedBy = "colors")
     @JsonView(Views.Complete.class)
-    @JsonSerialize(using = CustomEstacioSerializer.class)
+    @JsonSerialize(using = CustomEstacioListSerializer.class)
     private List<Estacio> estacions;
 
     @OneToMany(mappedBy = "color")
-    @JsonView(Views.Public.class)
+    //@JsonView(Views.Complete.class)
+    @JsonIgnore
     private Collection<Ruta> rutes;
 
     @OneToMany(mappedBy = "colorIncidencia")
