@@ -51,7 +51,9 @@ public class Color implements Serializable {
     @JsonIgnore
     private Collection<Incidencia> incidencies;
 
-
+    @ManyToMany(mappedBy = "colors_color")
+    @JsonIgnore
+    private Collection<Color> colors_color;
 
     public String getNom() {
         return nom;
@@ -103,4 +105,14 @@ public class Color implements Serializable {
     public void addIncidencia(Incidencia i) {
         incidencies.add(i);
     }
+
+
+    public void setColors(List<Color> listColor) {
+        this.colors_color = listColor;
+    }
+
+    public void addColor(Color c) {
+        colors_color.add(c);
+    }
+
 }

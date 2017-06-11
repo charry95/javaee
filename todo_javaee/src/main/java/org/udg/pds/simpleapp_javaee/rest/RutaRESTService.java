@@ -51,9 +51,25 @@ public class RutaRESTService extends RESTService{
             List<Color> colorsOrigen = new ArrayList<Color>(origen.getColors());
             List<Color> colorsDesti = new ArrayList<Color>(desti.getColors());
 
-            if(colorsDesti!=null && colorsOrigen!= null){// && colorsOrigen.get(0).getId().equals(colorsDesti.get(0).getId())){
+            if(colorsDesti!=null && colorsOrigen!= null){
+                // && colorsOrigen.get(0).getId().equals(colorsDesti.get(0).getId())){
+
+                int nColorsOrigen = 0;      //n colors tractats de l'estacio d'origen
+                while(nColorsOrigen != colorsOrigen.size()) {
+                    Color color_origen = colorsOrigen.get(nColorsOrigen);
+                    boolean trobatRutaSenseTrans = false;
+                    int nColorsDesti = 0;   //n colors tractats de l'estacio desti
+                    while(nColorsDesti != colorsDesti.size() ) {
+                        Color color_desti = colorsDesti.get(nColorsDesti);
+                        if(color_desti.equals(color_origen)) {
+                            trobatRutaSenseTrans = true;
+                            rutes = rutaService.getRutesNoTransbord(color_origen,origen,desti);
+                        }
+                    }
+                    nColorsOrigen++;
+                }
                 //List<List<Color>> camins = colorService.obtenirCaminsColors(colorsOrigen, colorsDesti);
-                rutes = rutaService.getRutesNoTransbord(colorsOrigen.get(0),origen,desti);
+                //rutes = rutaService.getRutesNoTransbord(colorsOrigen.get(0),origen,desti);
             }
         }
         return buildResponseWithView(Views.Complete.class, rutes);

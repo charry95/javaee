@@ -75,7 +75,10 @@ public class InitDB {
         r4.setColor(c1);
         r5.setColor(c1);
         Color c2 = new Color("r1");
+        Color c3 = new Color("r2");
         em.persist(c2);
+        em.persist(c3);
+        c1.addColor(c3);
 
         Estacio e1 = new Estacio(new Long(79315), "Portbou",42.424462,3.157686, null);
 
