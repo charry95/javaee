@@ -54,7 +54,7 @@ public class RutaRESTService extends RESTService{
             if(colorsDesti!=null && colorsOrigen!= null){
                 // && colorsOrigen.get(0).getId().equals(colorsDesti.get(0).getId())){
 
-                int nColorsOrigen = 0;      //n colors tractats de l'estacio d'origen
+                /*int nColorsOrigen = 0;      //n colors tractats de l'estacio d'origen
                 while(nColorsOrigen != colorsOrigen.size()) {
                     Color color_origen = colorsOrigen.get(nColorsOrigen);
                     boolean trobatRutaSenseTrans = false;
@@ -68,8 +68,8 @@ public class RutaRESTService extends RESTService{
                     }
                     nColorsOrigen++;
                 }
-                //List<List<Color>> camins = colorService.obtenirCaminsColors(colorsOrigen, colorsDesti);
-                //rutes = rutaService.getRutesNoTransbord(colorsOrigen.get(0),origen,desti);
+                //List<List<Color>> camins = colorService.obtenirCaminsColors(colorsOrigen, colorsDesti);*/
+                rutes = rutaService.getRutesNoTransbord(colorsOrigen.get(0),origen,desti);
             }
         }
         return buildResponseWithView(Views.Complete.class, rutes);
