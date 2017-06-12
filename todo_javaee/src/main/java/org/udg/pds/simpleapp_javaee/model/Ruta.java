@@ -6,6 +6,7 @@ package org.udg.pds.simpleapp_javaee.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -115,6 +116,14 @@ public class Ruta implements Serializable {
                 destiInclos = true;
         }
         return origenPrimer && destiInclos;
+    }
+
+    public Boolean conteEstacio(Long origen) {
+        Boolean estacioTrobada = false;
+        for(Tram actual : trams) {
+            if(actual.getEstacio().getId().equals(origen)) estacioTrobada = true;
+        }
+        return estacioTrobada;
     }
 
 }
