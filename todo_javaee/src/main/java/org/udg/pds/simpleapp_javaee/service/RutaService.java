@@ -32,10 +32,10 @@ public class RutaService {
             List<Ruta> rutes = q.getResultList();
             eliminarRutesPerDireccio(rutes,origen.getId(),desti.getId());
 
-            Collection<Incidencia> llistaIncidencies = c.getIncidencies();
-            if(llistaIncidencies.size() != 0) {
-                rutes = filtrarRutesIncidencies(rutes,llistaIncidencies);
-            }
+           // Collection<Incidencia> llistaIncidencies = c.getIncidencies();
+            //if(llistaIncidencies.size() != 0) {
+            //    rutes = filtrarRutesIncidencies(rutes,llistaIncidencies);
+            //}
             return rutes;
         } catch (Exception ex) {
             // Very important: if you want that an exception reaches the EJB caller, you have to throw an EJBException
