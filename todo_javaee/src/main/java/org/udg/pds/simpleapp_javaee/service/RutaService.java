@@ -1,8 +1,6 @@
 package org.udg.pds.simpleapp_javaee.service;
 
-import org.udg.pds.simpleapp_javaee.model.Estacio;
-import org.udg.pds.simpleapp_javaee.model.Ruta;
-import org.udg.pds.simpleapp_javaee.model.Color;
+import org.udg.pds.simpleapp_javaee.model.*;
 
 import javax.ejb.EJBException;
 import javax.ejb.LocalBean;
@@ -33,6 +31,11 @@ public class RutaService {
             q.setParameter("c",c);
             List<Ruta> rutes = q.getResultList();
             eliminarRutesPerDireccio(rutes,origen.getId(),desti.getId());
+
+            Collection<Incidencia> llistaIncidencies = c.getIncidencies();
+            if(llistaIncidencies.size() != 0) {
+                rutes = filtrarRutesIncidencies(rutes,llistaIncidencies);
+            }
             return rutes;
         } catch (Exception ex) {
             // Very important: if you want that an exception reaches the EJB caller, you have to throw an EJBException
@@ -56,7 +59,7 @@ public class RutaService {
         }
     }
 
-    public Collection<Ruta> llistatRutes(Color c, Estacio origen) {
+    public Collection<Ruta> getRutesColorEstacio(Color c, Estacio origen) {
         try {
             Query q = em.createQuery("SELECT ruta FROM Ruta ruta WHERE ruta.color=:c");
             q.setParameter("c",c);
@@ -83,5 +86,20 @@ public class RutaService {
             rutes.remove((index-esborrats));
             esborrats++;
         }
+    }
+
+    public List<Ruta> filtrarRutesIncidencies(List<Ruta> rutes, Collection<Incidencia> llistaIncidencies) {
+        Integer retardTotal = 0;
+        for(Incidencia in : llistaIncidencies){
+            if(in.getActiva()) {
+                retardTotal = retardTotal + in.getRetard().intValue();
+            }
+        }
+        for(Ruta rut : rutes) {
+            rut.sumarRetard(retardTotal);
+        }
+
+
+        return rutes;
     }
 }

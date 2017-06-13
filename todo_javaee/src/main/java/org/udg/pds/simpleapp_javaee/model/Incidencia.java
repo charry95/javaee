@@ -43,7 +43,7 @@ public class Incidencia implements Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonView(Views.Private.class)
+    @JsonView(Views.Public.class)
     protected Long id;
 
     @NotNull
@@ -59,6 +59,7 @@ public class Incidencia implements Serializable {
     /** Relacio ManyToOne amb la classe Color */
     @JsonView(Views.Public.class)
     @ManyToOne
+    @JsonIgnore
     private Color colorIncidencia;
 
 
