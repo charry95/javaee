@@ -48,8 +48,8 @@ public class InitDB {
 
 
         // modificacions
-        Incidencia incidencia_test = new Incidencia("test incidencia",Long.decode("10"),Boolean.TRUE);
-        em.persist(incidencia_test);
+        /*Incidencia incidencia_test = new Incidencia("test incidencia",Long.decode("10"),Boolean.TRUE);
+        em.persist(incidencia_test);*/
 
         Ruta r1 = new Ruta("dreta");
         em.persist(r1);
@@ -74,32 +74,41 @@ public class InitDB {
         r3.setColor(c1);
         r4.setColor(c1);
         r5.setColor(c1);
-        Color c2 = new Color("r1");
-        Color c3 = new Color("r2");
+        Color c2 = new Color("r2");
         em.persist(c2);
-        em.persist(c3);
+
+        /*ColorRelacio cr1 = new ColorRelacio(c1,c2);
+        em.persist(cr1);
+        c1.addColorcolor(cr1);
+        ColorRelacio cr2 = new ColorRelacio(c2,c1);
+        em.persist(cr2);
+        c2.addColorcolor(cr2);*/
         //c1.addColor(c3);
 
         Estacio e1 = new Estacio(new Long(79315), "Portbou",42.424462,3.157686, null);
 
         em.persist(e1);
         e1.addColor(c1);
-        e1.addColor(c2);
+        //e1.addColor(c2);
 
         Estacio e2 = new Estacio(new Long(79300), "Girona",41.979116,2.817076, null);
         em.persist(e2);
         e2.addColor(c1);
-        e2.addColor(c2);
+        //e2.addColor(c2);
 
         Estacio e3 = new Estacio(new Long(79202),"Sils",41.807685,2.744855, null);
         em.persist(e3);
         e3.addColor(c1);
-        e3.addColor(c2);
+        //e3.addColor(c2);
 
         Estacio e4 = new Estacio(new Long(79200), "Maçanet-Massanes",41.772461,2.674072, null);
         em.persist(e4);
         e4.addColor(c1);
         e4.addColor(c2);
+
+        Estacio e5 = new Estacio(new Long(79107), "Hostalric",41.747698,2.631290, null);
+        em.persist(e5);
+        e5.addColor(c2);
 
         Tram tram1 = new Tram(6,23,r1);
         em.persist(tram1);
@@ -173,8 +182,10 @@ public class InitDB {
         em.persist(tram18);
         tram18.setEstacio(e1);
 
-        incidencia_test.setColor(c1);
-        c1.addIncidencia(incidencia_test);
+        /*incidencia_test.setColor(c1);
+        c1.addIncidencia(incidencia_test);*/
+
+        em.flush();
 
         /*e1.getColors().add(c1);
         e2.getColors().add(c1);

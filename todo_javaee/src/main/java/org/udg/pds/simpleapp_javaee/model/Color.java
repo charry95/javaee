@@ -51,6 +51,16 @@ public class Color implements Serializable {
     @JsonIgnore
     private Collection<Incidencia> incidencies;
 
+    /*@ManyToMany(targetEntity = Color.class)
+    @JoinTable(name = "tbl_colors", joinColumns =
+            @JoinColumn(name = "coloract", referencedColumnName = "id", nullable = false, insertable = false), inverseJoinColumns =
+            @JoinColumn(name = "colorde", referencedColumnName = "id", nullable = false, insertable=false))
+    private Collection<Color> colors_color;*/
+
+    /*@ManyToMany(mappedBy = "coloract")
+    @JsonIgnore
+    private Collection<ColorRelacio> colorscolor;*/
+
     /*@ManyToMany(mappedBy = "colorsde")
     @JsonIgnore
     private Collection<Color> colorspropis;
@@ -110,13 +120,17 @@ public class Color implements Serializable {
         incidencies.add(i);
     }
 
-
-    /*public void setColors(List<Color> listColor) {
-        this.colorspropis = listColor;
+    /*public Collection<ColorRelacio> getColorscolor(){
+        colorscolor.size();
+        return colorscolor;
     }
 
-    public void addColor(Color c) {
-        colorspropis.add(c);
+    public void setColorscolor(List<ColorRelacio> listColorscolor) {
+        this.colorscolor = listColorscolor;
+    }
+
+    public void addColorcolor(ColorRelacio c) {
+        colorscolor.add(c);
     }*/
 
 }
