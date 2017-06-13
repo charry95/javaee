@@ -48,8 +48,8 @@ public class InitDB {
 
 
         // modificacions
-        /*Incidencia incidencia_test = new Incidencia("test incidencia",Long.decode("10"),Boolean.TRUE);
-        em.persist(incidencia_test);*/
+        Incidencia incidencia_test = new Incidencia("test incidencia",Long.decode("10"),Boolean.TRUE);
+        em.persist(incidencia_test);
 
         Ruta r1 = new Ruta("dreta");
         em.persist(r1);
@@ -182,8 +182,7 @@ public class InitDB {
         em.persist(tram18);
         tram18.setEstacio(e1);
 
-        /*incidencia_test.setColor(c1);
-        c1.addIncidencia(incidencia_test);*/
+        incidencia_test.setColor(c1);
 
         em.flush();
 
