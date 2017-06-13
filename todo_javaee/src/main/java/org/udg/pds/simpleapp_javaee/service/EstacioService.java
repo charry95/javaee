@@ -5,15 +5,12 @@ package org.udg.pds.simpleapp_javaee.service;
  */
 
 import org.udg.pds.simpleapp_javaee.model.Estacio;
-import org.udg.pds.simpleapp_javaee.rest.RESTService;
 
 import javax.ejb.EJBException;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
 import java.util.Collection;
 
 @Stateless

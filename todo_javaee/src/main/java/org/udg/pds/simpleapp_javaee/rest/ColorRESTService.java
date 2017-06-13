@@ -21,7 +21,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Path("/color")
 @RequestScoped
@@ -46,6 +48,21 @@ public class ColorRESTService extends RESTService{
                                @PathParam("id") Long id) {
         Color c = colorService.getColor(id);
         return buildResponseWithView(Views.Complete.class, c);
+    }
+
+    @GET
+    @Path("/test")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getColor(@Context HttpServletRequest req) {
+        Color c1 = colorService.getColor(new Long(1));
+        Color c8 = colorService.getColor(new Long(3));
+        Color c11 = colorService.getColor(new Long(2));
+        Collection<Color> r1 = colorService.getColorsEstacio(new Long(79604));
+        //r1.add(c11);
+        Collection<Color> r8 = colorService.getColorsEstacio(new Long(79100));
+        //r8.add(c11);
+
+        return buildResponseWithView(Views.Public.class, colorService.obtenirMinimaPermutacioColors(r1,r8));
     }
 }
 

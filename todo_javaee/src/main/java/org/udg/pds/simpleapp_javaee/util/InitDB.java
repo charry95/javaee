@@ -66,14 +66,17 @@ public class InitDB {
         Ruta r5 = new Ruta("esquerra");
         em.persist(r5);
 
-
-        Color c1 = new Color("r11");
+        Color c1 = new Color("r1");
         em.persist(c1);
-        r1.setColor(c1);
-        r2.setColor(c1);
-        r3.setColor(c1);
-        r4.setColor(c1);
-        r5.setColor(c1);
+        Color c11 = new Color("r11");
+        em.persist(c11);
+        r1.setColor(c11);
+        r2.setColor(c11);
+        r3.setColor(c11);
+        r4.setColor(c11);
+        r5.setColor(c11);
+        Color c8 = new Color("r8");
+        em.persist(c8);
         Color c2 = new Color("r2");
         em.persist(c2);
 
@@ -88,27 +91,37 @@ public class InitDB {
         Estacio e1 = new Estacio(new Long(79315), "Portbou",42.424462,3.157686, null);
 
         em.persist(e1);
-        e1.addColor(c1);
+        e1.addColor(c11);
         //e1.addColor(c2);
 
         Estacio e2 = new Estacio(new Long(79300), "Girona",41.979116,2.817076, null);
         em.persist(e2);
-        e2.addColor(c1);
+        e2.addColor(c11);
         //e2.addColor(c2);
 
         Estacio e3 = new Estacio(new Long(79202),"Sils",41.807685,2.744855, null);
         em.persist(e3);
-        e3.addColor(c1);
+        e3.addColor(c11);
         //e3.addColor(c2);
 
         Estacio e4 = new Estacio(new Long(79200), "Maçanet-Massanes",41.772461,2.674072, null);
         em.persist(e4);
+        e4.addColor(c11);
         e4.addColor(c1);
         e4.addColor(c2);
 
-        Estacio e5 = new Estacio(new Long(79107), "Hostalric",41.747698,2.631290, null);
+        Estacio e5 = new Estacio(new Long(79604), "Pineda de mar",41.772461,2.674072, null);
         em.persist(e5);
-        e5.addColor(c2);
+        e5.addColor(c1);
+
+        Estacio e6 = new Estacio(new Long(72209), "Martorell",41.747698,2.631290, null);
+        em.persist(e6);
+        e6.addColor(c8);
+
+        Estacio e7 = new Estacio(new Long(79100), "Granollers Centre",41.747698,2.631290, null);
+        em.persist(e7);
+        e7.addColor(c11);
+        e7.addColor(c8);
 
         Tram tram1 = new Tram(6,23,r1);
         em.persist(tram1);

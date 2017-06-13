@@ -28,6 +28,13 @@ public class Color implements Serializable {
         this.rutes = new ArrayList<>();
     }
 
+    public Color(Long id, String nom) {
+        this.id = id;
+        this.nom = nom;
+        this.rutes = new ArrayList<>();
+    }
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(Views.Public.class)
