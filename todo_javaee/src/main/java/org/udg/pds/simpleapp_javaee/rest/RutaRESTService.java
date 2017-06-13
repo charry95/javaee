@@ -56,6 +56,7 @@ public class RutaRESTService extends RESTService{
             List<Color> colorsDesti = new ArrayList<Color>(desti.getColors());
 
             if(colorsDesti!=null && colorsOrigen!= null){
+
                 // && colorsOrigen.get(0).getId().equals(colorsDesti.get(0).getId())){
 
                 /*int nColorsOrigen = 0;      //n colors tractats de l'estacio d'origen

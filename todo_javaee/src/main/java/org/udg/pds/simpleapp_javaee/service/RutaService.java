@@ -98,8 +98,24 @@ public class RutaService {
         for(Ruta rut : rutes) {
             rut.sumarRetard(retardTotal);
         }
-
-
         return rutes;
+    }
+
+    public void unirLlistatRutes (List<Ruta> llistatRutesEsq, List<Ruta> llistatRutesDre, Long idEstacioOrigen) {
+        Integer contador = 0;
+        for(Ruta r_dreta : llistatRutesDre){
+            contador = 0;
+            Integer horaIniciDreta = r_dreta.getTram(idEstacioOrigen).getHora();
+            Integer minIniciDreta = r_dreta.getTram(idEstacioOrigen).getMinut();
+            for(Ruta r_esquerra : llistatRutesEsq) {
+                Integer horaIniciEsq = r_esquerra.getTram(idEstacioOrigen).getHora();
+                Integer minIniciEsq = r_esquerra.getTram(idEstacioOrigen).getMinut();
+                if(horaIniciDreta < horaIniciEsq || ((horaIniciDreta == horaIniciEsq) && (minIniciDreta < minIniciEsq))) {
+                    break;
+                }
+                contador++;
+            }
+            llistatRutesEsq.add(contador,r_dreta);
+        }
     }
 }
