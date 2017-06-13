@@ -56,6 +56,20 @@ public class RutaRESTService extends RESTService{
             List<Color> colorsDesti = new ArrayList<Color>(desti.getColors());
 
             if(colorsDesti!=null && colorsOrigen!= null){
+                ArrayList<ArrayList<Color>> permutacions = colorService.obtenirMinimaPermutacioColors(colorsOrigen, colorsDesti);
+                Boolean transbord = false;
+                for(ArrayList<Color> permutacio : permutacions){
+                    transbord = permutacio.size()>1;
+                    if(transbord)
+                        break;
+                }
+                if(!transbord){
+                    Collection<Ruta> rutesColor = null;
+                    for(ArrayList<Color> permutacio : permutacions){
+                        rutesColor = rutaService.getRutesNoTransbord(permutacio.get(0),origen,desti);
+                        //rutaService
+                    }
+                }
                 // && colorsOrigen.get(0).getId().equals(colorsDesti.get(0).getId())){
 
                 /*int nColorsOrigen = 0;      //n colors tractats de l'estacio d'origen
