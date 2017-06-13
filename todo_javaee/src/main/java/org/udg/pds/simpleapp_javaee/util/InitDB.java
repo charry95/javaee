@@ -68,6 +68,10 @@ public class InitDB {
 
         Ruta r5 = new Ruta("esquerra");
         em.persist(r5);
+        /****/
+        Ruta r6 = new Ruta("esquerra");
+        em.persist(r6);
+        /****/
 
         Color c1 = new Color("r1");
         em.persist(c1);
@@ -78,6 +82,9 @@ public class InitDB {
         r3.setColor(c11);
         r4.setColor(c11);
         r5.setColor(c11);
+        /****/
+        r6.setColor(c1);
+        /****/
         Color c8 = new Color("r8");
         em.persist(c8);
         Color c2 = new Color("r2");
@@ -105,6 +112,9 @@ public class InitDB {
         Estacio e3 = new Estacio(new Long(79202),"Sils",41.807685,2.744855, null);
         em.persist(e3);
         e3.addColor(c11);
+        /****/
+        e3.addColor(c1);
+        /****/
         //e3.addColor(c2);
 
         Estacio e4 = new Estacio(new Long(79200), "Maçanet-Massanes",41.772461,2.674072, null);
@@ -197,6 +207,18 @@ public class InitDB {
         Tram tram18 = new Tram(21,55,r5);
         em.persist(tram18);
         tram18.setEstacio(e1);
+
+        /****/
+
+        Tram tram19 = new Tram(10,15,r6);
+        em.persist(tram19);
+        tram19.setEstacio(e4);
+
+        Tram tram20 = new Tram(10,30,r6);
+        em.persist(tram20);
+        tram20.setEstacio(e3);
+
+        /****/
 
         incidencia_test.setColor(c1);
         inc.setColor(c1);

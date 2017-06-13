@@ -64,8 +64,8 @@ public class RutaRESTService extends RESTService{
                         break;
                 }
                 if(!transbord){
-                    List<Ruta> rutesColor = new ArrayList<>();
                     for(ArrayList<Color> permutacio : permutacions){
+                        List<Ruta> rutesColor = new ArrayList<>();
                         Collection<Ruta> rutaColor = rutaService.getRutesNoTransbord(permutacio.get(0),origen,desti);
                         rutesColor.addAll(rutaColor);
                         rutaService.unirLlistatRutes(rutes, rutesColor, origen.getId());
@@ -75,21 +75,4 @@ public class RutaRESTService extends RESTService{
         }
         return buildResponseWithView(Views.Complete.class, rutes);
     }
-
-    /*
-    @GET
-    @Path("/color")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getRutesColor(@Context HttpServletRequest req,
-                             @QueryParam("origen") Long idOrigen,
-                             @QueryParam("color") Long idColor) {
-        Collection<Ruta> rutes = null;
-        Estacio origen = estacioService.getEstacio(idOrigen);
-        Color color = colorService.getColor(idColor);
-        if(origen!=null && color!=null) {
-            rutes = rutaService.getRutesColorEstacio(color,origen);
-        }
-        return buildResponseWithView(Views.Complete.class, rutes);
-    }
-    */
 }

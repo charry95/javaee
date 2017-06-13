@@ -94,6 +94,9 @@ public class ColorService {
                 salvats.clear();
                 salvats.add(contador);
             }
+            else if(permutacio.size() == maxim){
+                salvats.add(contador);
+            }
             else{
                 eliminar.add(contador);
             }
