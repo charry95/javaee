@@ -5,6 +5,7 @@
  */
 package org.udg.pds.simpleapp_javaee.util;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.udg.pds.simpleapp_javaee.model.*;
 
 import javax.annotation.PostConstruct;
@@ -48,8 +49,10 @@ public class InitDB {
 
 
         // modificacions
-        Incidencia incidencia_test = new Incidencia("test incidencia",Long.decode("10"),Boolean.TRUE);
+        Incidencia incidencia_test = new Incidencia("test incidencia",Long.decode("10"),Boolean.FALSE);
         em.persist(incidencia_test);
+        Incidencia inc = new Incidencia("Atropellament d'una persona a l'estació de Girona",Long.decode("20"), Boolean.TRUE);
+        em.persist(inc);
 
         Ruta r1 = new Ruta("dreta");
         em.persist(r1);
@@ -123,7 +126,7 @@ public class InitDB {
         tram3.setEstacio(e3);
 
         Tram tram4 = new Tram(7,35,r1);
-        em.persist(tram3);
+        em.persist(tram4);
         tram4.setEstacio(e4);
 
         Tram tram5 = new Tram(10,19,r2);
@@ -183,6 +186,8 @@ public class InitDB {
         tram18.setEstacio(e1);
 
         incidencia_test.setColor(c1);
+        inc.setColor(c1);
+
 
         em.flush();
 

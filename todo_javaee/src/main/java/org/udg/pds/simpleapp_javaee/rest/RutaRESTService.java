@@ -79,6 +79,7 @@ public class RutaRESTService extends RESTService{
         return buildResponseWithView(Views.Complete.class, rutes);
     }
 
+    /*
     @GET
     @Path("/color")
     @Produces(MediaType.APPLICATION_JSON)
@@ -89,8 +90,9 @@ public class RutaRESTService extends RESTService{
         Estacio origen = estacioService.getEstacio(idOrigen);
         Color color = colorService.getColor(idColor);
         if(origen!=null && color!=null) {
-            rutes = rutaService.llistatRutes(color,origen);
+            rutes = rutaService.getRutesColorEstacio(color,origen);
         }
         return buildResponseWithView(Views.Complete.class, rutes);
     }
+    */
 }

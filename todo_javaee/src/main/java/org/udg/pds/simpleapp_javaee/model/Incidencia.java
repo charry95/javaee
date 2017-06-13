@@ -59,6 +59,7 @@ public class Incidencia implements Serializable {
     /** Relacio ManyToOne amb la classe Color */
     @JsonView(Views.Public.class)
     @ManyToOne
+    @JsonIgnore
     private Color colorIncidencia;
 
 

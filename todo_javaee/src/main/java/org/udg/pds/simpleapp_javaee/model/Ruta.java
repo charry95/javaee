@@ -104,6 +104,14 @@ public class Ruta implements Serializable {
 
     public Collection<Tram> getTrams() { return trams; }
 
+    public Tram getTram(Long idEstacio) {
+        Tram tram = null;
+        for(Tram actual : trams) {
+            if(actual.getEstacio().getId().equals(idEstacio)) tram = actual;
+        }
+        return tram;
+    }
+
     public void setTrams(Collection<Tram> trams) { this.trams = trams; }
 
     public Boolean direccioCorrecte(Long origen, Long desti){
@@ -126,4 +134,17 @@ public class Ruta implements Serializable {
         return estacioTrobada;
     }
 
+    public void sumarRetard(Integer retard) {
+        for(Tram t : trams) {
+            Integer hora = t.getHora();
+            Integer min = t.getMinut();
+            min += retard;
+            while(min >= 60) {
+                min -= 60;
+                hora += 1;
+            }
+            t.setMinut(min);
+            t.setHora(hora);
+        }
+    }
 }
