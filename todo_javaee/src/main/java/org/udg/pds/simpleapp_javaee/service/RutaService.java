@@ -55,4 +55,33 @@ public class RutaService {
             esborrats++;
         }
     }
+
+    public Collection<Ruta> llistatRutes(Color c, Estacio origen) {
+        try {
+            Query q = em.createQuery("SELECT ruta FROM Ruta ruta WHERE ruta.color=:c");
+            q.setParameter("c",c);
+            List<Ruta> rutes = q.getResultList();
+            eliminarRutesSenseEstacio(rutes,origen.getId());
+            return rutes;
+        } catch (Exception ex) {
+            // Very important: if you want that an exception reaches the EJB caller, you have to throw an EJBException
+            // We catch the normal exception and then transform it in a EJBException
+            throw new EJBException(ex);
+        }
+    }
+
+    public void eliminarRutesSenseEstacio(List<Ruta> rutes, Long origen){
+        List<Integer> indexRemove = new ArrayList<>();
+        Integer contador = 0;
+        for(Ruta act : rutes){
+            if(!act.conteEstacio(origen))
+                indexRemove.add(contador);
+            contador++;
+        }
+        Integer esborrats = 0;
+        for(Integer index : indexRemove){
+            rutes.remove((index-esborrats));
+            esborrats++;
+        }
+    }
 }

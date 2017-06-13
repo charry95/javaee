@@ -8,6 +8,7 @@ import org.udg.pds.simpleapp_javaee.model.Color;
 import org.udg.pds.simpleapp_javaee.model.Estacio;
 import org.udg.pds.simpleapp_javaee.model.Ruta;
 import org.udg.pds.simpleapp_javaee.model.Views;
+import org.udg.pds.simpleapp_javaee.service.ColorService;
 import org.udg.pds.simpleapp_javaee.service.EstacioService;
 import org.udg.pds.simpleapp_javaee.service.RutaService;
 import org.udg.pds.simpleapp_javaee.util.ToJSON;
@@ -35,6 +36,9 @@ public class RutaRESTService extends RESTService{
 
     @EJB
     EstacioService estacioService;
+
+    @EJB
+    ColorService colorService;
 
     @Inject
     ToJSON toJSON;
@@ -71,6 +75,21 @@ public class RutaRESTService extends RESTService{
                 //List<List<Color>> camins = colorService.obtenirCaminsColors(colorsOrigen, colorsDesti);*/
                 rutes = rutaService.getRutesNoTransbord(colorsOrigen.get(0),origen,desti);
             }
+        }
+        return buildResponseWithView(Views.Complete.class, rutes);
+    }
+
+    @GET
+    @Path("/color")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRutesColor(@Context HttpServletRequest req,
+                             @QueryParam("origen") Long idOrigen,
+                             @QueryParam("color") Long idColor) {
+        Collection<Ruta> rutes = null;
+        Estacio origen = estacioService.getEstacio(idOrigen);
+        Color color = colorService.getColor(idColor);
+        if(origen!=null && color!=null) {
+            rutes = rutaService.llistatRutes(color,origen);
         }
         return buildResponseWithView(Views.Complete.class, rutes);
     }
