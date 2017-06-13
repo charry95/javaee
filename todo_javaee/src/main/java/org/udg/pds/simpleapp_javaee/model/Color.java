@@ -32,6 +32,7 @@ public class Color implements Serializable {
         this.id = id;
         this.nom = nom;
         this.rutes = new ArrayList<>();
+        this.incidencies = new ArrayList<>();
     }
 
 
