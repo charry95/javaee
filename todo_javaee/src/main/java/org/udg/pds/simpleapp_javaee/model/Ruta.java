@@ -4,19 +4,13 @@ package org.udg.pds.simpleapp_javaee.model;
  * Created by u1933 on 03/05/2017.
  */
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.udg.pds.simpleapp_javaee.rest.serializer.CustomColorRutaSerializer;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"id"}))

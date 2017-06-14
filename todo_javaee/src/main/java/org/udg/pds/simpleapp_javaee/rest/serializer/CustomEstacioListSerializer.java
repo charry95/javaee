@@ -5,11 +5,9 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-import javafx.util.Pair;
 import org.udg.pds.simpleapp_javaee.model.Estacio;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
