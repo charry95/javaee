@@ -7,6 +7,7 @@ package org.udg.pds.simpleapp_javaee.model;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.udg.pds.simpleapp_javaee.rest.serializer.CustomColorRutaSerializer;
+import org.udg.pds.simpleapp_javaee.rest.serializer.CustomTrenRutaSerializer;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -51,9 +52,16 @@ public class Ruta implements Serializable {
     @ManyToOne
     private Color color;
 
+    @ManyToOne
+    @JsonView(Views.Public.class)
+    @JsonSerialize(using = CustomTrenRutaSerializer.class)
+    private Tren tren;
+
     @OneToMany(mappedBy = "ruta")
     @JsonView(Views.Public.class)
     private Collection<Tram> trams;
+
+
 
     /** Relacio OneToMany amb la classe Incidencia
      *  Relacio OneToMany amb la classe Tram
@@ -110,6 +118,14 @@ public class Ruta implements Serializable {
     }
 
     public void setTrams(Collection<Tram> trams) { this.trams = trams; }
+
+    public Tren getTren(){
+        return tren;
+    }
+
+    public void setTren(Tren t){
+        this.tren = t;
+    }
 
     public Boolean direccioCorrecte(Long origen, Long desti){
         Boolean origenPrimer = false;

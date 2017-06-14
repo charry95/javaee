@@ -54,6 +54,12 @@ public class InitDB {
         Incidencia inc = new Incidencia("Atropellament d'una persona a l'estació de Girona",Long.decode("20"), Boolean.TRUE);
         em.persist(inc);
 
+        Tren reg = new Tren("Serie 447", "Regional");
+        em.persist(reg);
+
+        Tren md = new Tren("Serie 449", "MD");
+        em.persist(md);
+
         Ruta r1 = new Ruta("dreta");
         em.persist(r1);
 
@@ -72,6 +78,13 @@ public class InitDB {
         Ruta r6 = new Ruta("esquerra");
         em.persist(r6);
         /****/
+
+        r1.setTren(reg);
+        r2.setTren(reg);
+        r3.setTren(md);
+        r4.setTren(md);
+        r5.setTren(reg);
+        r6.setTren(reg);
 
         Color c1 = new Color("r1");
         em.persist(c1);

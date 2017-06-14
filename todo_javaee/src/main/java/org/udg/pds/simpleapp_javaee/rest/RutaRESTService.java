@@ -82,6 +82,6 @@ public class RutaRESTService extends RESTService{
                 }*/
             }
         }
-        return buildResponseWithView(Views.Complete.class, rutes);
+        return buildResponseWithView(Views.Public.class, rutes);
     }
 }

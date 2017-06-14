@@ -43,11 +43,15 @@ public class Tren implements Serializable {
     protected Long id;
 
     @NotNull
-    @JsonView(Views.Public.class)
+    @JsonView(Views.Private.class)
     private String nom;
 
     @JsonView(Views.Public.class)
     private String tipus;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "tren")
+    private Collection<Ruta> rutes;
 
 
     /** Relacio OneToMany amb la classe Ruta */
@@ -77,7 +81,7 @@ public class Tren implements Serializable {
 
     public void setTipus(String tipus) { this.tipus = tipus; }
 
-    /*public Collection<Ruta> getRutes() { return rutes; }
+    public Collection<Ruta> getRutes() { return rutes; }
 
-    public void setRutes(Collection<Ruta> rutes) { this.rutes = rutes; }*/
+    public void setRutes(Collection<Ruta> rutes) { this.rutes = rutes; }
 }
