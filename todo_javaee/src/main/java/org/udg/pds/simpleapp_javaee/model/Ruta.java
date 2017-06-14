@@ -6,7 +6,9 @@ package org.udg.pds.simpleapp_javaee.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.udg.pds.simpleapp_javaee.rest.serializer.CustomColorRutaSerializer;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -50,7 +52,8 @@ public class Ruta implements Serializable {
     @JsonView(Views.Public.class)
     private String direccio;
 
-    @JsonIgnore
+    @JsonView(Views.Public.class)
+    @JsonSerialize(using = CustomColorRutaSerializer.class)
     @ManyToOne
     private Color color;
 

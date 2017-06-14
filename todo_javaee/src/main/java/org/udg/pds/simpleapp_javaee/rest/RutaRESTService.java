@@ -71,6 +71,15 @@ public class RutaRESTService extends RESTService{
                         rutaService.unirLlistatRutes(rutes, rutesColor, origen.getId());
                     }
                 }
+                /*else{
+                    for(ArrayList<Color> permutacio : permutacions){
+                        List<Ruta> listRutesPermutacio = new ArrayList<>();
+                        Collection<Ruta> rutesPermutacio = rutaService.getRutesTransbord(permutacio,origen,desti);
+                        listRutesPermutacio.addAll(rutesPermutacio);
+                        //fusionar listRutesPermutacio amb rutes
+                    }
+                    //podar per hora darribada/sortida
+                }*/
             }
         }
         return buildResponseWithView(Views.Complete.class, rutes);

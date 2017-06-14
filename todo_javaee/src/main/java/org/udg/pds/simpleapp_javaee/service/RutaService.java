@@ -44,6 +44,14 @@ public class RutaService {
         }
     }
 
+    public Collection<Ruta> getRutesTransbord(ArrayList<Color> colors, Estacio origen, Estacio desti){
+        //obtenir id estacio colisio entre 2 colors
+        //obtenir rutes color: 1. que passin per origen i colisio 2. que passin per colisio
+        // unir cadascuna de les rutes 1 amb la més propera de rutes 2
+        //
+        return null;
+    }
+
     public void eliminarRutesPerDireccio(List<Ruta> rutes, Long origen, Long desti){
         List<Integer> indexRemove = new ArrayList<>();
         Integer contador = 0;
